@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myd</title>
+  <style>
+  .classA {
+    color: red;
+  }
+  .classB {
+   background: blue;
+  }
+  .classC {
+    color: darkviolet;
+  }
+  </style>
+</head>
+<body>
+<div id="demo">
+    <h1>class是字符串</h1>
+  <p :class = "myClass">:class="myClass"</p>
+  <p :class ="{classA :isA,classB:isB}">class为对象{类名：值，类名确定，值不确定}</p>
+  <button @click = "update">点击切换</button>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: "#demo",
+    data: {
+      myClass :"classC" ,
+      isA : false,
+      isB : true,
+    },
+    methods :{
+      update (){
+        this.myClass = "classB";
+        this.isA = !this.isA;
+      }
+    }
+  })
+</script>
+</body>
+</html>

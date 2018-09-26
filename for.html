@@ -5,7 +5,7 @@
   <title>myd</title>
   <style>
   .classP{
-    color: red;
+    color: blue;
     font-size: 20px;
   }
 
@@ -14,7 +14,6 @@
 <body>
 <div id="box">
   <p class="classP">遍历数组</p>
-  <p :class="p">遍历数组2</p>
   <ul>
     <li v-for="(person,index) in persons" :key = "index">
       {{index}}~{{person.name}}-{{person.age}}
@@ -23,7 +22,7 @@
 
     </li>
   </ul>
-
+  <p :class="p">遍历数组2</p>
 </div>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">

@@ -12,18 +12,55 @@
 <body>
 <!--模板（html+js）-->
 <div id="box">
-  <input type="text" v-model="msg">
-<p>hello  {{msg}}</p>
-</div>
-<div id="box2">
-  <h2>{{msg}}</h2>
+  <form action="https://reactjs.org/">
+    用户名：<input type="text" v-model="users.username"></br>
+    密码 ： <input type="password" v-model="users.pwd"></br>
+    性别 ： <input type="radio" id="male" v-model="users.sex" value="female">
+          <label for="male">女</label>
+          <input type="radio" id="female" v-model="users.sex">
+          <label for="female">男</label><br>
+    爱好：<input type="checkbox" id="basket" value="basket"  v-model="users.likes">
+         <label for="basket" >篮球</label>
+        <input type="checkbox" id="footBall"  value="footBall" v-model="users.likes">
+        <label for="footBall">足球</label>
+        <input type="checkbox" id="pingPang"  value="pingPang" v-model="users.likes" >
+        <label for="pingPang"  >乒乓球</label></br>
+    城市 ： <select>
+            <option value="">未选择</option>
+            <option v-for="(city,index) in allCitys ">
+              {{city.id}}---{{city.name}}
+            </option>
+          </select></br>
+    介绍：<textarea rows="10" cols="20" v-model="users.text"></textarea><br>
+    <input type="submit" value="注册" @click.prevent = "submit">
+  </form>
 </div>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
   new Vue({
     el:"#box",//
     data:{
+        users : {
+          username : "",
+          pwd : "",
+          likes : ["basket"],
+          sex : "female",
+          text :""
 
+        },
+      allCitys :[
+        {id:0,name : "北京"},
+        {id:1,name : "上海"},
+        {id:2,name : "天津"},
+        {id:3,name : "重庆"},
+      ]
+    },
+    methods :{
+      submit (){
+        alert(1111);
+   console.log(JSON.stringify(this.users));
+f
+      }
     }
   });
 

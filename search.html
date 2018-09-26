@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myd</title>
+  <style>
+  </style>
+</head>
+<body>
+<div id="demo">
+<input type="text" v-model="searchName">
+  <ul>
+    <li v-for="(item,index) in filterPersons" :key="index">
+      <!--页面上展示的是过滤后的li列表-->
+     {{index}}---{{item.name}}---{{item.age}}
+    </li>
+  </ul>
+  <!--点击按钮，升序-->
+  <button @click ="testType=1">年龄升序</button>
+  <!--点击按钮降序-->
+  <button @click = "testType=2">年龄降序</button>
+  <!--点击按钮默认顺序-->
+  <button @click = "testType=0">原本顺序</button>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+    el: "#demo",
+    data: {
+      persons :[
+        {name: 'Tom', age: 15},
+        {name: 'Jack', age: 13},
+        {name: 'Bob', age: 18},
+        {name: 'Marry', age: 16},
+        {name: 'Rose', age: 17}
+      ],
+      searchName : "",//初始值为空
+      testType : 0 ,  //初始化状态 0不排序 ,1升序,2降序
+
+    },
+    computed : {
+      filterPersons (){//计算后的数组，需要显示顾虑后的数组
+        //得到相关的数据
+        const {persons,searchName,testType} = this;
+        //过滤原来的数组,得到一个新数组
+        const newPersons = persons.filter(item => {
+          //判断item里面查找元素，返回下标
+          return item.name.indexOf(searchName)!== -1;
+        });
+        //判断testType,
+      if(testType !== 0){//===0，不排序，不等于0,排序
+        newPersons.sort((p1,p2) =>{
+          if(testType === 1){//升序
+            return p1.age - p2.age;
+          }else {
+            return p2.age - p1.age;//降序
+          }
+        });
+      }
+       return newPersons;
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

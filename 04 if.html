@@ -15,8 +15,8 @@
   <hr>
   <p v-show="ok">求婚成功</p>
   <p v-show="!ok">求婚失败</p>
-  <!--<button @click = "ok = !ok">切换</button>-->
-  <button @click = "update">切换</button><!--定义一个方法-->
+  <button @click = "ok = !ok">切换1</button>
+  <button @click = "update">切换2</button><!--定义一个方法-->
 </div>
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
@@ -31,7 +31,6 @@ new Vue({
       console.log(this.ok);
     }
   }
-
 })
 </script>
 </body>
