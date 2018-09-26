@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myd</title>
+  <style>
+    .classA{
+      color:yellow;
+
+    }
+    .classB{
+      color: red;
+    }
+    .classC{
+       background: violet;
+      color: blue;
+     }
+    .Aclass{
+     font-size: 50px;
+    }
+    .Bclass {
+      background: greenyellow;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <p :class="a" >字符串</p><!--a是一个变量，给变量重新赋值-->
+  <p :class = "{Aclass :isA,Bclass :isB}">true or false</p>
+  <button @click ="update">更新</button>
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+  el:"#box",
+  data:{
+    a : "classA",
+    isA : true,
+    isB : false
+  },
+  methods:{
+    update(){
+      this.a = "classB";//给变量重新赋值
+      this.isA = false;
+      this.isB = true
+    }
+  }
+
+});
+</script>
+</body>
+</html>

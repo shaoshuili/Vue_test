@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myd</title>
+  <style>
+
+
+  </style>
+</head>
+<body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+
+  const p = {
+    firstName :"A",
+    lastName :"B"
+  };
+  //给对象增加一个属性
+  Object.defineProperty(p,"fullName",{
+    get (){//返回属性值就是fullName
+      console.log("get()");
+      return this.firstName + "-" + this.lastName;
+    },
+    set (value){
+      console.log('set()',value);
+      const str = value.split("-");
+      this.firstName = str[0];
+      this.lastName = str[1];
+    }
+  });
+  
+  console.log(p.fullName);
+  p.firstName = "1";
+  p.lastName = "2";
+  console.log(p.fullName);
+  p.fullName = "3-4";
+  console.log(p.firstName);
+  console.log(p.lastName);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myd</title>
+  <style>
+
+
+  </style>
+</head>
+<body>
+<div id="box">
+  <h1>1.双括号表达式</h1>
+  <h5>{{text}}</h5><!--//变量-->
+  <h5>{{text.toUpperCase()}}</h5><!--//方法-->
+  <h2>2.强制数据绑定</h2>
+  <a :href = "url">点击访问指定地址</a>
+  <h2>3.绑定事件监听</h2>
+  <button @click="test(111)">点我</button>
+</div>
+
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+new Vue ({
+  el : "#box",
+  data : {
+    text : "hello Vue",
+    url :"https://cn.vuejs.org/"
+  },
+  methods: {
+    test (text) {//text就是传入的值
+      alert(text)
+    }
+  }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myd</title>
+  <style>
+
+
+  </style>
+</head>
+<body>
+<div id="box">
+  <p v-if = "ok">表白成功</p>
+  <p v-else>表白失败</p>
+  <hr>
+  <p v-show="ok">求婚成功</p>
+  <p v-show="!ok">求婚失败</p>
+  <!--<button @click = "ok = !ok">切换</button>-->
+  <button @click = "update">切换</button><!--定义一个方法-->
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+  el:"#box",
+  data :{
+    ok:true
+  },
+  methods :{
+    update (){
+      this.ok = !this.ok;
+      console.log(this.ok);
+    }
+  }
+
+})
+</script>
+</body>
+</html>

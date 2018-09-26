@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myd</title>
+  <style>
+  </style>
+</head>
+<body>
+<div id="wrap">
+  姓 ：<input type="text" placeholder="FirstName" v-model="firstName"></br>
+  名 ：<input type="text" placeholder="FirstName" v-model="lastName"></br>
+  姓名：<input type="text" placeholder="fullName" v-model="fullName1"></br>
+  姓名2：<input type="text" placeholder="fullName2" v-model="fullName2"></br>
+  姓名3：<input type="text" placeholder="fullName3" v-model="fullName3" >
+  <p>{{fullName3}}</p>
+
+</div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+  const vm = new Vue ({
+    el : "#wrap",
+   data : {
+     firstName: "A",
+     lastName: "B",
+     fullName2 : "A+B",
+   },
+   computed : {//计算属性的值
+     fullName1 (){
+       return this.firstName +"_"+ this.lastName;
+     },
+     //计算属性，实现双向变动
+     fullName3 : {
+       get (){//获取当前的属性值
+         return this.firstName + "_" + this.lastName;//计算当前相关数据的展示
+       },
+       set(text){//当属性值发证改变，自动调用。监视当前的属性值变化，自动更新
+         const names = text.split("_");
+         console.log(text);
+         this.firstName = names[0];
+         this.lastName = names[1];
+       }
+     },
+   },
+  watch :{//配置监视
+    firstName: function (value) {//监视firstName,当发生改变，在函数内部计算
+       this.fullName2 = value +"="+ this.lastName;
+    }
+  }
+ });
+  //监视lastName
+vm.$watch("lastName",function (value) {
+
+  this.fullName2 = this.firstName + "+" + value;
+})
+</script>
+</body>
+</html>
